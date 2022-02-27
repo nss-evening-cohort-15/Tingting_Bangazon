@@ -15,4 +15,4 @@ urlpatterns = [
     path('', include(router.urls)),
     path('login', auth_token_views.obtain_auth_token),
     path('register', views.register_user)
-]
+    ]
