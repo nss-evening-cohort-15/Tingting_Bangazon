@@ -75,3 +75,15 @@ class ProductTests(APITestCase):
         response = self.client.get('/api/products')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), Product.objects.count())
+
+    def test_filter_by_location(self):
+        location ='Colorado'
+        response=self.client.get(f'/api/products?location={location}')
+        prod_length = Product.objects.filter(location=location).count()
+        self.assertEqual(len(response.data),prod_length)
+        
+    def test_filter_by_min_price(self):
+        min_price =1000
+        response=self.client.get(f'/api/products?min_price={min_price}')
+        prod_length = Product.objects.filter(price__gte=min_price).count()
+        self.assertEqual(len(response.data),prod_length)
