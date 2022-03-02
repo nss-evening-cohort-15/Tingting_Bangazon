@@ -1,4 +1,5 @@
 from .category_serializer import CategorySerializer
+from .favorite_serializer import FavoriteSerializer
 from .order_serializer import OrderSerializer, UpdateOrderSerializer
 from .payment_type_serializer import PaymentTypeSerializer, CreatePaymentType
 from .product_serializer import (
